@@ -4,15 +4,15 @@ RUN apt update && apt install -y build-essential git curl autoconf bison libtool
 
 WORKDIR /tmp
 
-RUN curl https://codeload.github.com/php/php-src/tar.gz/php-7.4.0alpha2 | tar xvz \
-    && cd php-src-php-7.4.0alpha2 \
+RUN curl https://codeload.github.com/php/php-src/tar.gz/php-7.4.0beta1 | tar xvz \
+    && cd php-src-php-7.4.0beta1 \
     && autoconf \
     && ./buildconf --force \
     && ./configure --with-readline --with-openssl --with-curl --with-ffi --enable-mbstring --enable-pcntl --enable-sockets --with-sodium --with-zlib \
     && make \
     && make install \
     && cd .. \
-    && rm -rf php-src-php-7.4.0alpha2 \
+    && rm -rf php-src-php-7.4.0beta1 \
     && curl https://getcomposer.org/installer > /composer-setup.php \
     && php /composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && rm /composer-setup.php
